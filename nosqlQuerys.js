@@ -5,12 +5,12 @@ db.Card.find(
     { "description.type" : { $eq : "Water" } } 
 ).pretty()
 
-// Finds all Orders that arrived after 30/10/2022
-db.Order.find(
-    { 
-        arrival_date : { $gt : ISOdate("2022-10-30T00:00:00Z") } 
-    }
-).pretty()
+// Finds all Orders that arrived after 30/10/2022 (NOT WORKING)
+// db.Order.find(
+//     { 
+//         arrival_date : { $gt : ISOdate("2022-10-30T00:00:00Z") } 
+//     }
+// ).pretty()
 
 // Finds the number of Buyers whos id is not 'b1', does not have a Credit card
 db.Buyer.find(
@@ -93,11 +93,5 @@ db.Card.aggregate([
 db.Seller.aggregate([
     { $group: {
         _id : "$region"
-    } }
-])
-
-db.Buyer.aggregate([
-    { $group: {
-        _id : "$shipping_address.country"
     } }
 ])
